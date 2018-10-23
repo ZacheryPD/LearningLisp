@@ -1,8 +1,8 @@
 (defun simple-reverse (input) ; A simple function to recursively reverse a list
-  (if (cdr input) ; If the input is a list of at least length 2,
-      (append (simple-reverse (cdr input)) ; To the reversed 'tail' of the list ...
-              (list (car input))) ; ... Append the first element of that list
-    input)) ; Else, it is already reversed.
+  (if (cdr input) ; if there is a 'tail' on this list
+      (append (simple-reverse (cdr input)) ; To the reversed 'tail' of the list, append...
+              (list (car input))) ; ... the first element of that list (as a single-element list because the append function requires it to be so)
+    input)) ; Else, it is already reversed, so just return it.
 
 (defvar a (list 4 3 2 1)) ; To test, lets set up a new variable input
 
