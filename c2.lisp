@@ -9,9 +9,10 @@
 (print (lat? l))
 
 (defun simple-search (element list)
-  (if (eql (car list) element)
-      t
-    (simple-search element (cdr list))))
+  (cond
+   ((eql (car list) element) t)
+   ((cdr list) (simple-search element (cdr list)))
+   (t ())))
 
 (defvar a '(1 2 3 4))
 
