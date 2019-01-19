@@ -20,8 +20,9 @@
 (newline)
 
 ;; You can also use this shortcut to make lambdas
-(define (greet name)
-  (string-append "Hello, " name))
+(define greet
+  (lambda (name)
+    (string-append "Hello, " name)))
 
 (display (greet "World")) ; For some reason, though, this second display doesn't work (with or without the shortcut)
 
