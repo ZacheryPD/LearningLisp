@@ -13,10 +13,9 @@
     (string-append "My favorite color is " color " and my favorite number is " number)))
 
 ; display will print
+; and newline prints a newline.  You must use these together for reasons I don't currently understand
 (display
  (my-favorites my-favorite-color (number->string my-favorite-number)))
-
-; and newline prints a newline
 (newline)
 
 ;; You can also use this shortcut to make lambdas
@@ -24,8 +23,8 @@
   (lambda (name)
     (string-append "Hello, " name)))
 
-(display (greet "World")) ; For some reason, though, this second display doesn't work (with or without the shortcut)
-
+(display (greet "World"))
+(newline)
 
 
 
