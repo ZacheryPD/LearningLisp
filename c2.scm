@@ -21,9 +21,8 @@
 
 ; display will print
 ; and newline prints a newline.  You must use these together for reasons I don't currently understand
-(display
+(display-line
  (my-favorites my-favorite-color (number->string my-favorite-number)))
-(newline)
 
 ;; You can also use this shortcut to make lambdas
 (define greet
