@@ -9,6 +9,10 @@
     (display input)
     (newline)))
 
+(define atom?
+  (lambda (x)
+    (and (not (pair? x))(not (null? x)))))
+
 ;; The display function can be used to print output to the screen
 (display-line "Use the \"display\" function to print an input to the screen")
 ;; An atom is a string of characters
@@ -51,6 +55,28 @@
 
 ;; null?
 ; A function returning #t when the given input is null
+; Only valid for lists
 
 (display "null? '(): ")
 (display-line (null? '()))
+
+;; atom?
+; a helper function returning #t when the given input is an atom.
+(display "atom? '1234: ")
+(display-line (atom? '1234))
+
+(display "atom? 123: ")
+(display-line (atom? 123))
+
+(display "atom? '1234': ")
+(display-line (atom? "1234"))
+
+(display "atom? (): ")
+(display-line (atom? ()))
+
+(display "atom? '(): ")
+(display-line (atom? '()))
+
+;; eq?
+(display "eq? 1 2")
+(display-line (eq? 1 2))
