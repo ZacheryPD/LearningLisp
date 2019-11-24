@@ -29,8 +29,6 @@
   (lambda (name)
     (string-append "Hello, " name)))
 
-(display (greet "World"))
-(newline)
-
+(display-line (greet "World"))
 
 
