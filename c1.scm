@@ -14,3 +14,9 @@
 ; A list is an atom, or multiple atoms enclosed by parentheses
 (quote (atom)) ; a single atom enclosed by parentheses
 '(another) ; another single atom enclosed by parentheses
+'(1 2 3)
+
+;; car
+; The car function takes a list and returns the head of the list
+; (car '(1 2 3))
+ (display (car '("hello" ", " "world")))
