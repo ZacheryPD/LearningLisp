@@ -29,3 +29,11 @@
 ; (car '(1 2 3))
  (display-line (car '("hello" ", " "world")))
 
+
+;; cdr
+; Takes a list, returns the "rest" of that list
+; Must not be an empty list
+(define cdr-input '(1 2 3 4))
+(define cdr-result (cdr cdr-input))
+
+(display-line cdr-result)
