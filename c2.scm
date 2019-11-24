@@ -1,4 +1,11 @@
 ;;;; Chapter 2 examples
+;; Helpers
+; Print something and a newline
+(define display-line
+  (lambda (input)
+    (display input)
+    (newline)))
+
 ;;; Note: run this file with 'mit-scheme --quiet < c2.scm'
 
 ;; You can define variables using the "define" function
