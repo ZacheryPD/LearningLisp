@@ -27,7 +27,8 @@
 ;; car
 ; The car function takes a list and returns the head of the list
 ; (car '(1 2 3))
- (display-line (car '("hello" ", " "world")))
+(display "Car result: ")
+(display-line (car '("hello" ", " "world")))
 
 
 ;; cdr
@@ -36,4 +37,14 @@
 (define cdr-input '(1 2 3 4))
 (define cdr-result (cdr cdr-input))
 
+(display "Cdr result: ")
 (display-line cdr-result)
+
+;; cons
+; Appends something to the start of a list
+(define cons-target '(2 3 4))
+(define cons-1 1)
+(define cons-result (cons cons-1 cons-target))
+
+(display "Cons result: ")
+(display-line cons-result)
