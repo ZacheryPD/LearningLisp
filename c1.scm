@@ -48,3 +48,9 @@
 
 (display "Cons result: ")
 (display-line cons-result)
+
+;; null?
+; A function returning #t when the given input is null
+
+(display "null? '(): ")
+(display-line (null? '()))
