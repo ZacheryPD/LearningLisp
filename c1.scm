@@ -1,5 +1,5 @@
 ;;;; Chapter 1 notes
-;; To run this file, install mit-scheme and run scheme "--quiet < c1.scm"
+;; To run this file, install mit-scheme and run "scheme --quiet < c1.scm"
 
 
 ;; Helpers
