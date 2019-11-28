@@ -12,13 +12,22 @@
   (lambda (a lat)
     (cond
      ((null? lat) '())
-     (else (cond
-            ((eq? (car lat) a) (cdr lat))
-            (else (cons (car lat)
-                        (rember a
-                                (cdr lat)))))))))
+     ((eq? (car lat) a) (cdr lat))
+     (else (cons (car lat)
+                 (rember a
+                         (cdr lat)))))))
 
 (define a 'foo)
 (define lat '(bar foo bar))
 
 (display-line (rember a lat))
+
+(define firsts
+  (lambda (list)
+    (cond
+     ((null? list) '())
+     (else (cons (car (car list))
+                 (firsts (cdr list)))))))
+
+(define b '((foo bar) (a b) (c d)))
+(display-line (firsts b))
