@@ -48,3 +48,16 @@
 (define new 'c)
 
 (display-line (insertR old new lat))
+
+
+(define remove-all
+  (lambda (foo lat)
+    (cond
+     ((null? lat) '())
+     ((eq? (car lat) foo) (remove-all foo (cdr lat)))
+     (else (cons (car lat) (remove-all foo (cdr lat)))))))
+
+(define lat '(aa ab ac aa ba bb bc aa))
+(define foo 'aa)
+
+(display-line (remove-all foo lat))
