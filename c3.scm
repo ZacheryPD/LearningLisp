@@ -31,3 +31,20 @@
 
 (define b '((foo bar) (a b) (c d)))
 (display-line (firsts b))
+
+(define insertR
+  (lambda (old new lat)
+    (cond
+     ((null? lat) '())
+     ((eq? (car lat) old) (cons
+                           (car lat)
+                           (cons new (cdr lat))))
+     (else (cons
+            (car lat)
+            (insertR old new (cdr lat)))))))
+
+(define lat '(a b d))
+(define old 'b)
+(define new 'c)
+
+(display-line (insertR old new lat))
