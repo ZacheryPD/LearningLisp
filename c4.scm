@@ -57,7 +57,6 @@
     (cond
      ((zero? a) 0)
      ((zero? b) 0)
-     ((eq? b 1 ) a)
      (else (add a (mult a (sub1 b)))))))
 (display "3 x 4: ")
 (display-line (mult 3 4))
