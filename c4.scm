@@ -41,3 +41,23 @@
       (else (sub1 (sub a (sub1 b)))))))
 (display "5 - 4: ")
 (display-line (sub 5 4))
+
+; A method that adds all numbers in a tuple
+(define addtup
+  (lambda (tup)
+    (cond
+     ((null? tup) 0)
+     (else (add (car tup) (addtup (cdr tup)))))))
+(display "(addtup (1 2 3)): ")
+(display-line (addtup '(1 2 3)))
+
+; A method that performs multiplication
+(define mult
+  (lambda (a b)
+    (cond
+     ((zero? a) 0)
+     ((zero? b) 0)
+     ((eq? b 1 ) a)
+     (else (add a (mult a (sub1 b)))))))
+(display "3 x 4: ")
+(display-line (mult 3 4))
