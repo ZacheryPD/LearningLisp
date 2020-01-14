@@ -63,3 +63,17 @@
 (display-line (mult 0 2))
 (display "3 x 0: ")
 (display-line (mult 3 0))
+
+(define tup+
+  (lambda (tup1 tup2)
+    (cond
+     ((and (null? tup1) (null? tup2)) '())
+     ((null? tup1) '())
+     ((null? tup2) '())
+     (else (cons
+            (+ (car tup1) (car tup2))
+            (tup+ (cdr tup1) ( cdr tup2 )))))))
+(display "(tup+'(1 2) '(1 2)): ")
+(display-line (tup+ '(1 2) '(1 2)))
+(display "(tup+'(1 2 3) '(1 2)): ")
+(display-line (tup+ '(1 2 3) '(1 2)))
