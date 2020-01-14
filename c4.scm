@@ -43,13 +43,13 @@
 (display-line (sub 5 4))
 
 ; A method that adds all numbers in a tuple
-(define addtup
+(define sub-tup
   (lambda (tup)
     (cond
      ((null? tup) 0)
-     (else (add (car tup) (addtup (cdr tup)))))))
-(display "(addtup (1 2 3)): ")
-(display-line (addtup '(1 2 3)))
+     (else (add (car tup) (sub-tup (cdr tup)))))))
+(display "(sub-tup (1 2 3)): ")
+(display-line (sub-tup '(1 2 3)))
 
 ; A method that performs multiplication
 (define mult
