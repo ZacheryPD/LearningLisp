@@ -55,8 +55,11 @@
 (define mult
   (lambda (a b)
     (cond
-     ((zero? a) 0)
      ((zero? b) 0)
      (else (add a (mult a (sub1 b)))))))
 (display "3 x 4: ")
 (display-line (mult 3 4))
+(display "0 x 2: ")
+(display-line (mult 0 2))
+(display "3 x 0: ")
+(display-line (mult 3 0))
