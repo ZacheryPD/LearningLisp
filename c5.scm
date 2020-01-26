@@ -22,5 +22,18 @@
        (else (cons (car l) (rember* a (cdr l))))))
      (else (cons (rember* a (car l)) (rember* a (cdr l)))))))
 
-(display "(rember* 'one '('(one two) three one)): ")
+(display-line "(rember* 'one '('(one two) three one)): ")
 (display-line (rember* 'one '('(one two) three one)))
+
+(define insertr*
+  (lambda (old new lat)
+    (cond
+     ((null? lat) '())
+     ((atom? (car lat))
+      (cond
+       ((eq? (car lat) old) (cons old (cons new (insertr* old new (cdr lat)))))
+       (else (cons (car lat) (insertr* old new (cdr lat))))))
+     (else (cons (insertr* old new (car lat)) (insertr* old new (cdr lat)))))))
+
+(display-line "(insertr* 'foo 'bar '(foo '(foo bar) bar '(foo '(foo bar)))): ")
+(display-line (insertr* 'foo 'bar '(foo '(foo bar) bar '(foo '(foo bar)))))
