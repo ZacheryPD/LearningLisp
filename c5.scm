@@ -37,3 +37,16 @@
 
 (display-line "(insertr* 'foo 'bar '(foo '(foo bar) bar '(foo '(foo bar)))): ")
 (display-line (insertr* 'foo 'bar '(foo '(foo bar) bar '(foo '(foo bar)))))
+
+(define occur*
+  (lambda (a lat)
+    (cond
+     ((null? lat) 0)
+     ((atom? (car lat))
+             (cond
+              ((eq? (car lat) a) (+ 1  (occur* a (cdr lat))))
+              (else (occur* a (cdr lat)))))
+     (else (+ (occur* a (car lat)) (occur* a (cdr lat)))))))
+
+(display "(occur* '('foo '('foo 'bar) bar)): ")
+(display-line (occur* 'bar '(foo '(foo bar) bar bar)))
