@@ -50,3 +50,12 @@
 
 (display "(occur* '('foo '('foo 'bar) bar)): ")
 (display-line (occur* 'bar '(foo '(foo bar) bar bar)))
+
+(define leftmost
+  (lambda (l)
+    (cond
+     ((null? l) '())
+     ((atom? (car l)) (car l))
+     (else (leftmost (car l))))))
+(display-line (leftmost '(((1234 4321) asdf) fdsa)))
+(display-line (leftmost '(() 1234 2345)))
