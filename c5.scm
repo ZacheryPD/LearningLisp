@@ -37,6 +37,7 @@
 
 (display-line "(insertr* 'foo 'bar '(foo '(foo bar) bar '(foo '(foo bar)))): ")
 (display-line (insertr* 'foo 'bar '(foo '(foo bar) bar '(foo '(foo bar)))))
+(newline)
 
 (define occur*
   (lambda (a lat)
@@ -50,6 +51,7 @@
 
 (display "(occur* '('foo '('foo 'bar) bar)): ")
 (display-line (occur* 'bar '(foo '(foo bar) bar bar)))
+(newline)
 
 (define leftmost
   (lambda (l)
@@ -57,8 +59,14 @@
      ((null? l) '())
      ((atom? (car l)) (car l))
      (else (leftmost (car l))))))
+(display "(leftmost '(((1234 4321) asdf) fdsa)): ")
 (display-line (leftmost '(((1234 4321) asdf) fdsa)))
+(newline)
+
+(display "(leftmost '(() 1234 2345)): ")
 (display-line (leftmost '(() 1234 2345)))
+(newline)
+
 (define eqlist?
   (lambda (l1 l2)
     (cond
