@@ -59,3 +59,19 @@
      (else (leftmost (car l))))))
 (display-line (leftmost '(((1234 4321) asdf) fdsa)))
 (display-line (leftmost '(() 1234 2345)))
+(define eqlist?
+  (lambda (l1 l2)
+    (cond
+     ((and (null? l1) (null? l2)) #t)
+     ((or (null? l1) (null? l2)) #f)
+     ((and (eq? (car l1) (car l2)))
+      (eqlist? (cdr l1) (cdr l2)))
+     (else #f))))
+(display "(eqlist? '() '()): ")
+(display-line (eqlist? '() '()))
+
+(display "(eqlist? '(1 2 3) '(1 2 3)): ")
+(display-line (eqlist? '(1 2 3) '(1 2 3)))
+
+(display "(eqlist? '(1 2) '(3)): ")
+(display-line (eqlist? '(1 2) '(3)))
