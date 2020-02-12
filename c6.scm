@@ -33,3 +33,42 @@
 
 (display "(numbered? '(a b c)): ")
 (display-line (numbered? '(a b c)))
+
+(define 1st-sub-exp
+  (lambda (aexp)
+    (car  aexp)))
+
+(define operator
+  (lambda (aexp)
+    (car (cdr aexp))))
+
+(define 2nd-sub-exp
+  (lambda (aexp)
+    (car (cdr (cdr aexp)))))
+
+(define value
+  (lambda (nexp)
+    (cond
+     ((atom? nexp)
+      nexp)
+     ((eq? (operator nexp) '+)
+      (+ (value (1st-sub-exp nexp))
+         (value (2nd-sub-exp nexp))))
+     ((eq? (operator nexp) 'x)
+      (* (value (1st-sub-exp nexp))
+         (value (2nd-sub-exp nexp))))
+     (else
+      (expt (value (1st-sub-exp nexp))
+            (value (2nd-sub-exp nexp)))))))
+
+(display "(value '1): ")
+(display-line (value '1))
+(newline)
+
+(display "(value '(1 + 2)): ")
+(display-line (value '(1 + 2)))
+(newline)
+
+(display "(value '(1 + (2 + 3))): ")
+(display-line (value '(1 + (2 + 3))))
+(newline)
