@@ -17,21 +17,18 @@
 ;; and the third position is a number
 ;; A very bad draft
 (define numbered?
-  (lambda (exp)
+  (lambda (aexp)
     (cond
      ;; If the first place is an atom & number
      ;; & the second place is +
      ;; & the 3rd place is an atom & a number
-     ((and
-       (atom? (car exp))
-       (and
-        (number? (car exp))
-        (and
-         (eq? (car (cdr exp)) (quote +))
-         (and
-          (atom? (car (cdr (cdr exp))))
-          (number? (car (cdr (cdr exp))))))))
-      #t)
+     ((atom? aexp) (number?  aexp))
+     ((eq? (car (cdr aexp)) (quote +))
+      (and (numbered? (car aexp)) (numbered? (car (cdr (cdr aexp))))))
+     ((eq? (car (cdr aexp)) (quote x))
+      (and (numbered? (car aexp)) (numbered? (car (cdr (cdr aexp))))))
+     ((eq? (car (cdr aexp)) (quote ^))
+      (and (numbered? (car aexp)) (numbered? (car (cdr (cdr aexp))))))
      (else #f))))
 
 (display-line (numbered? '(1 + 2)))
