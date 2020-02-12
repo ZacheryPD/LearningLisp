@@ -12,23 +12,24 @@
   (lambda (x)
     (and (not (pair? x))(not (null? x)))))
 
-;; The goal is to identify cases where the first position is a number
-;; The second position is one of x, +, ^, -, or /
-;; and the third position is a number
-;; A very bad draft
+;; The goal is to identify cases where the first position is a number, the
+;; second position is one of x, +, ^, -, or / and the third position is a
+;; number. The more complete draft of the book assumes that you only use the
+;; right operators and moves on with life.
 (define numbered?
   (lambda (aexp)
     (cond
-     ;; If the first place is an atom & number
-     ;; & the second place is +
-     ;; & the 3rd place is an atom & a number
      ((atom? aexp) (number?  aexp))
-     ((eq? (car (cdr aexp)) (quote +))
-      (and (numbered? (car aexp)) (numbered? (car (cdr (cdr aexp))))))
-     ((eq? (car (cdr aexp)) (quote x))
-      (and (numbered? (car aexp)) (numbered? (car (cdr (cdr aexp))))))
-     ((eq? (car (cdr aexp)) (quote ^))
-      (and (numbered? (car aexp)) (numbered? (car (cdr (cdr aexp))))))
-     (else #f))))
+     (else
+      (and
+       (numbered? (car aexp))
+       (numbered? (car (cdr (cdr aexp)))))))))
 
+(display "(numbered? '(1 + 2)): ")
 (display-line (numbered? '(1 + 2)))
+
+(display "(numbered? '(1 2 3)): ")
+(display-line (numbered? '(1 2 3)))
+
+(display "(numbered? '(a b c)): ")
+(display-line (numbered? '(a b c)))
