@@ -70,3 +70,14 @@
 
 (display "subset: '(one two three) '(one two three four): ")
 (display-line (subset '(one two three) '(one two three four)))
+
+(define eqset?
+  (lambda (s1 s2)
+    (and
+     (subset s1 s2)
+     (subset s2 s1))))
+
+(display "eqset?: '(one two three) '(three two one): ")
+(display-line (eqset? '(one two three) '(three two one)))
+(display "eqset?: '(one three two) '(three one two four): ")
+(display-line (eqset? '(one three two) '(three one two four)))
