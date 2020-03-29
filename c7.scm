@@ -60,3 +60,13 @@
 (display "makeset-rember: one two one three one four")
 (display-line (makeset-rember'(one two one three one four)))
 
+(define subset
+  (lambda (s1 s2)
+    (cond
+     ((or (null? s1) (null? s2)) #t) ; The second part of the or (null? s2) is not necessary, but that case is
+                                        ; handled in side 'member I think this is the member function leaking its
+                                        ; functionality, so I am duplicating the check here.
+     (else (and (member? (car s1) s2) (subset (cdr s1) s2))))))
+
+(display "subset: '(one two three) '(one two three four): ")
+(display-line (subset '(one two three) '(one two three four)))
