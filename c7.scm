@@ -8,6 +8,13 @@
     (display input)
     (newline)))
 
+(define multirember
+  (lambda (a lat)
+    (cond
+     ((null? lat) '())
+     ((equal? a (car lat)) (multirember a (cdr lat)))
+     (else (cons (car lat) (multirember a (cdr lat)))))))
+
 (define atom?
   (lambda (x)
     (and (not (pair? x))(not (null? x)))))
@@ -28,7 +35,7 @@
 
 (display "set? (one two three one): ")
 (display-line (set? '(one two three one)))
-(display "set? (one two three)")
+(display "set? (one two three): ")
 (display-line (set? '(one two three)))
 
 (define makeset
@@ -40,4 +47,16 @@
 
 (display "makeset: one two one three one four: ")
 (display-line (makeset '(one two one three one four)))
+
+(define makeset-rember
+  (lambda (lat)
+    (cond
+     ((null? lat) '())
+     (else
+      (cons
+       (car lat)
+       (makeset-rember (multirember (car lat) (cdr lat))))))))
+
+(display "makeset-rember: one two one three one four")
+(display-line (makeset-rember'(one two one three one four)))
 
