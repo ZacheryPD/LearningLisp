@@ -81,3 +81,30 @@
 (display-line (eqset? '(one two three) '(three two one)))
 (display "eqset?: '(one three two) '(three one two four): ")
 (display-line (eqset? '(one three two) '(three one two four)))
+
+(define intersect?
+  (lambda (s1 s2)
+    (cond
+     ((or (null? s1) (null? s2)) #f)
+     ((member? (car s1) s2) #t)
+     (else (intersect? (cdr s1) s2)))))
+
+(display "intersect? '(one two three) '(three four five): ")
+(display-line (intersect? '(one two three) '(three four five)))
+(display "intersect? '(one two three) '(four five six): ")
+(display-line (intersect? '(one two three) '(four five six)))
+
+(define intersect
+  (lambda (s1 s2)
+    (cond
+     ((or (null? s1) (null? s2)) '())
+     ((member (car s1) s2)
+      (cons
+       (car s1)
+       (intersect (cdr s1) s2)))
+     (else (intersect (cdr s1) s2)))))
+
+(display "intersect '(one two three) '(two three four): ")
+(display-line (intersect '(one two three) '(two three four)))
+(display "intersect '(one two three) '(four five six): ")
+(display-line (intersect '(one two three) '(four five six)))
