@@ -122,17 +122,9 @@
 (define intersectall
   (lambda (s-exp)
     (cond
-     ((null? s-exp) '())
      ((null? (cdr s-exp)) (car s-exp))
-     ((intersect? (car s-exp) (car (cdr s-exp)))
-      ; (display "Head: ")
-      ; (display-line (car s-exp))
-      ; (display "Rest: ")
-      ; (display-line (car (cdr s-exp)))
-      (intersectall (cons
-                     (intersect (car s-exp) (car (cdr s-exp)))
-                     (cdr (cdr s-exp)))))
-     (else '()))))
+     (else (intersect (car s-exp)
+                      (intersectall (cdr s-exp)))))))
 
 (display "intersectall '((1 2 3) (2 3 4)): ")
 (display-line (intersectall '((1 2 3) (2 3 4))))
