@@ -108,3 +108,35 @@
 (display-line (intersect '(one two three) '(two three four)))
 (display "intersect '(one two three) '(four five six): ")
 (display-line (intersect '(one two three) '(four five six)))
+
+
+(define union
+  (lambda (s1 s2)
+    (cond
+     ((null? s1) s2)
+     ((member? (car s1) s2) (union (cdr s1) s2))
+     (else (cons (car s1) (union (cdr s1) s2))))))
+(display "union '(one two three) '(two three four): ")
+(display-line (union '(one two three) '(two three four)))
+
+(define intersectall
+  (lambda (s-exp)
+    (cond
+     ((null? s-exp) '())
+     ((null? (cdr s-exp)) (car s-exp))
+     ((intersect? (car s-exp) (car (cdr s-exp)))
+      ; (display "Head: ")
+      ; (display-line (car s-exp))
+      ; (display "Rest: ")
+      ; (display-line (car (cdr s-exp)))
+      (intersectall (cons
+                     (intersect (car s-exp) (car (cdr s-exp)))
+                     (cdr (cdr s-exp)))))
+     (else '()))))
+
+(display "intersectall '((1 2 3) (2 3 4)): ")
+(display-line (intersectall '((1 2 3) (2 3 4))))
+
+(display "intersectall '((1 2 3) (2 3 4) (3 4 5)): ")
+(display-line (intersectall '((1 2 3) (2 3 4) (3 4 5))))
+
